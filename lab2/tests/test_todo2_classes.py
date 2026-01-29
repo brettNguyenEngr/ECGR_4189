@@ -21,10 +21,10 @@ def test_service_uses_composition_and_logs():
     assert "3" in msgs[0]
     assert "30" in msgs[0]
 
-    def test_service_str():
-        logger = Logger()
-        svc = Service(name="beta", factor=2, logger=logger)
-        s = str(svc)
-        assert "Service" in s
-        assert "beta" in s
-        assert "2" in s
+def test_service_str():
+    logger = Logger()
+    svc = Service(name="beta", factor=2, logger=logger)
+    s = str(svc)
+    assert "Service" in s
+    assert "beta" in s
+    assert "2" in s

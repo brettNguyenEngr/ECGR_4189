@@ -4,15 +4,14 @@ class Logger:
     A simple logger that stores messages in memory.
     """
     def __init__(self) -> None:
-        self.messages = []
+        self._messages: List[str] = []
     def log(self, message: str) -> None:
-        self.messages.append(message)
+        self._messages.append(message)
     def messages(self) -> List[str]:
         """
         Return all logged messages in order.
         """
-        return self.messages
-        raise NotImplementedError
+        return list(self._messages)
 
 class Service:
     """
@@ -23,7 +22,6 @@ class Service:
         self.name = name
         self.factor = factor
         self.logger = logger
-        raise NotImplementedError
     def handle(self, data: int) -> int:
         """
         Multiply data by factor, log the operation, and return the result.
@@ -34,11 +32,9 @@ class Service:
         result = data * self.factor
         self.logger.log(f"svc={self.name} data={data} factor={self.factor} result={result}")
         return result
-        raise NotImplementedError
     def __str__(self) -> str:
         """
         Return a readable string representation, e.g.:
         "Service(name=alpha, factor=3)"
         """
         return f"Service(name={self.name}, factor={self.factor})"
-        raise NotImplementedError
